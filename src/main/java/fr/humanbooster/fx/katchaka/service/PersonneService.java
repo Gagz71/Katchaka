@@ -39,4 +39,5 @@ public interface PersonneService {
 
 	Page<Personne> recupererPersonnes(String filtre, Pageable pageable);
 
+    boolean supprimerPersonne(Long id);
 }

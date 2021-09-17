@@ -154,8 +154,12 @@ public class KatchakaController {
 
               }
               return mv;
+       }
 
-
+       @GetMapping("supprimerPersonne")
+       public ModelAndView personneDelete(@RequestParam(name="ID") Long id) {
+              personneService.supprimerPersonne(id);
+              return new ModelAndView("redirect:personnes");
        }
 
        @GetMapping({"statut"})

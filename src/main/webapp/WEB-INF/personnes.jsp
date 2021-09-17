@@ -55,16 +55,57 @@
             
                   <div class="row">
                         <div class="col-2">
-                              <c:if test="${!pageDePersonnes.first}">
-                                    <a href="?page=0&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">&#x23EE;</a>
-                                    <a href="?page=${pageDePersonnes.number-1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">&#x23EA;</a>
-                              </c:if>
-                              Page ${pageDePersonnes.number+1}
-                              <!-- On teste si la page de personnes est la dernière page -->
-                              <c:if test="${!pageDePersonnes.last}">
-                                    <a href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">&#x23E9;</a>
-                                    <a href="?page=${pageDePersonnes.totalPages - 1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">&#x23ED;</a>
-                              </c:if>
+      
+                              <div>
+                                    <ul class="pagination">
+<%--                                                Si c'est pas la première page--%>
+                                          <c:if test="${!pageDePersonnes.first}">
+                                                <li class="page-item ">
+                                                      <%--Lien vers la première page--%>
+                                                      <a class="page-link" href="?page=0&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}"><<<</a>
+                                                </li>
+                                                <li class="page-item">
+                                                      <a class="page-link" href="?page=${pageDePersonnes.number-1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}" >&laquo;</a>
+                                                </li>
+                                          </c:if>
+<%--                                          si c'est la première page--%>
+                                          <c:if test="${pageDePersonnes.first}">
+                                                <li class="page-item disabled ">
+                                                      <a class="page-link" href="#">&laquo;</a>
+                                                </li>
+                                          </c:if>
+                                          <li class="page-item active">
+                                                <a class="page-link" href="#">${pageDePersonnes.number+1}</a>
+                                          </li>
+                                          <li class="page-item">
+                                                <a class="page-link" href="#">${pageDePersonnes.number+2}</a>
+                                          </li>
+                                          <li class="page-item">
+                                                <a class="page-link" href="#">${pageDePersonnes.number+3}</a>
+                                          </li>
+                                          <li class="page-item">
+                                                <a class="page-link" href="#">${pageDePersonnes.number+4}</a>
+                                          </li>
+                                          <li class="page-item">
+                                                <a class="page-link" href="#">${pageDePersonnes.number+5}</a>
+                                          </li>
+<%--                                          Si c'est la dernière page--%>
+                                          <c:if test="${pageDePersonnes.last}">
+                                          <li class="page-item disabled">
+                                                <a class="page-link" >&raquo;</a>
+                                          </li>
+                                          </c:if>
+                                          <%--Si c'est pas la dernière page--%>
+                                          <c:if test="${!pageDePersonnes.last}">
+                                                <li class="page-item">
+                                                      <a class="page-link" href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">&raquo;</a>
+                                                </li>
+                                                <li class="page-item">
+                                                      <a href="?page=${pageDePersonnes.totalPages - 1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}" class="page-link">>>></a>
+                                                </li>
+                                          </c:if>
+                                    </ul>
+                              </div>
                         </div>
                   </div>
             </div>

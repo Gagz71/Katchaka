@@ -85,4 +85,19 @@ public class PersonneServiceImpl implements PersonneService {
 		// On transmet le filtre et le pageable à la DAO
 		return personneDao.findByPseudoContaining(filtre, pageable);
 	}
+
+	@Override
+	public boolean supprimerPersonne(Long id) {
+		Personne personne = recupererPersonne(id);
+		if (personne==null) {
+			return false;
+		}else {
+			personneDao.delete(personne);
+			if (recupererPersonne(id)==null) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+	}
 }
