@@ -1,0 +1,51 @@
+2021-09-17 07:43:41.786  WARN 9710 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'ID' for method parameter type Long is not present]
+2021-09-17 09:12:02.904  INFO 5568 --- [main] f.h.f.katchaka.KatchakaApplicationTests  : Starting KatchakaApplicationTests using Java 17 on gagz-HP-ProBook-450-G8-Notebook-PC with PID 5568 (started by gagz in /home/gagz/Documents/Cours/Spring/katchaka)
+2021-09-17 09:12:02.907  INFO 5568 --- [main] f.h.f.katchaka.KatchakaApplicationTests  : No active profile set, falling back to default profiles: default
+2021-09-17 09:12:03.410  INFO 5568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-17 09:12:03.461  INFO 5568 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2021-09-17 09:12:03.909  INFO 5568 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-17 09:12:03.956  INFO 5568 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-17 09:12:04.072  INFO 5568 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-17 09:12:04.183  INFO 5568 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-09-17 09:12:04.328  INFO 5568 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-09-17 09:12:04.337  INFO 5568 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-09-17 09:12:04.953  INFO 5568 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-17 09:12:04.959  INFO 5568 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-17 09:12:05.509  WARN 5568 --- [main] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [{synthetic-alias}.interets.size]; use collection function syntax instead [size({synthetic-alias}.interets)].
+2021-09-17 09:12:05.529  WARN 5568 --- [main] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [{synthetic-alias}.interets.size]; use collection function syntax instead [size({synthetic-alias}.interets)].
+2021-09-17 09:12:07.453  WARN 5568 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-17 09:12:07.968  INFO 5568 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-09-17 09:12:08.335  INFO 5568 --- [main] f.h.f.katchaka.KatchakaApplicationTests  : Started KatchakaApplicationTests in 5.682 seconds (JVM running for 6.556)
+2021-09-17 09:12:09.107  INFO 5568 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-09-17 09:12:09.115  INFO 5568 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-09-17 09:12:09.122  INFO 5568 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-09-17 09:12:17.103  INFO 5774 --- [restartedMain] f.h.fx.katchaka.KatchakaApplication      : Starting KatchakaApplication using Java 17 on gagz-HP-ProBook-450-G8-Notebook-PC with PID 5774 (/home/gagz/Documents/Cours/Spring/katchaka/target/classes started by gagz in /home/gagz/Documents/Cours/Spring/katchaka)
+2021-09-17 09:12:17.106  INFO 5774 --- [restartedMain] f.h.fx.katchaka.KatchakaApplication      : No active profile set, falling back to default profiles: default
+2021-09-17 09:12:17.136  INFO 5774 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-17 09:12:17.137  INFO 5774 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-17 09:12:17.490  INFO 5774 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-09-17 09:12:17.524  INFO 5774 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 5 JPA repository interfaces.
+2021-09-17 09:12:17.849  INFO 5774 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-17 09:12:17.854  INFO 5774 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-09-17 09:12:17.855  INFO 5774 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-09-17 09:12:17.982  INFO 5774 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-09-17 09:12:17.988  INFO 5774 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-09-17 09:12:17.988  INFO 5774 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 851 ms
+2021-09-17 09:12:18.054  INFO 5774 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-09-17 09:12:18.071  INFO 5774 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-09-17 09:12:18.112  INFO 5774 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-09-17 09:12:18.148  INFO 5774 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-09-17 09:12:18.207  INFO 5774 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-09-17 09:12:18.212  INFO 5774 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-09-17 09:12:18.630  INFO 5774 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-09-17 09:12:18.635  INFO 5774 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-09-17 09:12:18.946  WARN 5774 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [{synthetic-alias}.interets.size]; use collection function syntax instead [size({synthetic-alias}.interets)].
+2021-09-17 09:12:18.958  WARN 5774 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [{synthetic-alias}.interets.size]; use collection function syntax instead [size({synthetic-alias}.interets)].
+2021-09-17 09:12:19.420  WARN 5774 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-09-17 09:12:19.543  INFO 5774 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-09-17 09:12:19.632  INFO 5774 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-09-17 09:12:19.654  INFO 5774 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-17 09:12:19.663  INFO 5774 --- [restartedMain] f.h.fx.katchaka.KatchakaApplication      : Started KatchakaApplication in 2.835 seconds (JVM running for 3.449)
+2021-09-17 09:12:26.782  INFO 5774 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-09-17 09:12:26.782  INFO 5774 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-09-17 09:12:26.783  INFO 5774 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
