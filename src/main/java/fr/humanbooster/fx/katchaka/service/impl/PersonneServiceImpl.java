@@ -100,4 +100,9 @@ public class PersonneServiceImpl implements PersonneService {
 			}
 		}
 	}
+
+	@Override
+	public Personne recupererPersonne(String email, String motDePasse) {
+		return personneDao.findByEmailAndMotDePasse(email, motDePasse);
+	}
 }

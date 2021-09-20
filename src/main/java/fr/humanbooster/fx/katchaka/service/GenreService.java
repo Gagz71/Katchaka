@@ -12,3 +12,5 @@ public interface GenreService {
 
 	Genre recupererGenre(String nom);
 }
+
+

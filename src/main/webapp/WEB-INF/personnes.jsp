@@ -35,9 +35,13 @@
                               <div class="col-4">
                                     <div class="card ${personne.genre.nom == 'Femme' ?'border-primary ' : 'border-info'} mb-3 ml-5" >
                                           <div class="card-header bg-transparent ${personne.genre.nom == 'Femme' ?'border-primary ' : 'border-info'}">Ville: <strong>${personne.ville.nom}</strong></div>
-                                          <div class="card-body ">
-                                                <h5 class="card-title"><strong>${personne.pseudo}</strong>
-                                                      <a href="personne?ID=${personne.id}">🖋️</a>
+                                          <div class="card-body d-flex flex-column ">
+                                                <h5 class="card-title d-flex align-items-center justify-content-between">
+                                                      <strong>${personne.pseudo}</strong>
+                                                      <div class="col-2 d-flex">
+                                                            <a href="personne?ID=${personne.id}" class="nav-link"> ✏️</a>
+                                                            <a href="supprimerPersonne?ID=${personne.id}" class="nav-link">❌</a>
+                                                      </div>
                                                 </h5>
                                                 <p class="card-text">Né${personne.genre.nom == 'Femme' ? 'e':' '} le: <strong>${personne.dateDeNaissance}</strong></p>
                                                 <p class="card-text">Sexe: <strong>${personne.genre.nom}</strong></p>
@@ -46,7 +50,10 @@
                                                 <p class="card-text">Description: <strong>${personne.bio}</strong></p>
                                                 <p class="card-text"><strong>${personne.estFumeur ? 'Fumeur' : 'Non-fumeur'}</strong></p>
                                           </div>
-                                          <div class="card-footer ${personne.genre.nom == 'Femme' ?'bg-outline-primary border-primary' : 'bg-outline-info border-info'} ">Statut: <strong>${personne.statut.nom}</strong></div>
+                                          <div class="card-footer ${personne.genre.nom == 'Femme' ?'bg-outline-primary border-primary' : 'bg-outline-info border-info'} ">
+                                                Statut: <strong>${personne.statut.nom}</strong>
+                                              <a href="invitation?ID=${personne.id}">Inviter</a>
+                                          </div>
                                     </div>
                               </div>
                              
@@ -111,6 +118,8 @@
             </div>
 
       </div>
+
+
 
 <jsp:include page="footer.jsp"/>
 

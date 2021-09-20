@@ -61,4 +61,5 @@ public interface PersonneDao extends JpaRepository<Personne, Long> {
 
 	Page<Personne> findByPseudoContaining(String filtre, Pageable pageable);
 
+    Personne findByEmailAndMotDePasse(String email, String motDePasse);
 }

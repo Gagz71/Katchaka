@@ -5,16 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -76,7 +67,7 @@ public class Personne {
     @OneToMany(mappedBy = "destinataire")
     private List<Message> messagesRecus;
     
-    @OneToMany(mappedBy= "expediteur")
+    @OneToMany(mappedBy= "expediteur", fetch = FetchType.EAGER)
     private List<Invitation> invitationsEnvoyees;
 
     @OneToMany(mappedBy= "destinataire")
