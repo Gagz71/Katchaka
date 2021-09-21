@@ -7,6 +7,7 @@ Projet Maven MVC<br>Application de rencontres amoureuses.
     <li>CRUD utilisateurs</li>
     <li>Téléversement d'image</li>
     <li>Envois d'invitations entre utilisateurs</li>
+    <li>Réception d'une notification par sms lorsqu'invitation reçue</li>
     <li>Acceptation/déclinaison d'invitations entre utilisateurs</li>
     <li>Envois/Réceptions de messages entre utilisateurs</li>
 </ul> 
