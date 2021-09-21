@@ -42,7 +42,7 @@
                         </c:forEach>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
+                        <a href="invitation?ID=${personneId.id}" class="card-link">Inviter</a>
                         <a href="#" class="card-link">Another link</a>
                     </div>
                     <div class="card-footer text-muted">

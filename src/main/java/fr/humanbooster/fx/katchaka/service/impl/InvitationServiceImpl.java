@@ -5,6 +5,8 @@ import fr.humanbooster.fx.katchaka.business.Personne;
 import fr.humanbooster.fx.katchaka.dao.InvitationDao;
 import fr.humanbooster.fx.katchaka.service.InvitationService;
 import fr.humanbooster.fx.katchaka.service.PersonneService;
+import fr.humanbooster.fx.katchaka.util.ProgramSms;
+import fr.humanbooster.fx.katchaka.util.ProgramSmsSend;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,16 +16,23 @@ public class InvitationServiceImpl implements InvitationService {
 
     private InvitationDao invitationDao;
     private PersonneService personneService;
+    private ProgramSms programSms;
+    private ProgramSmsSend programSmsSend;
 
     public InvitationServiceImpl(InvitationDao invitationDao, PersonneService personneService) {
         this.invitationDao = invitationDao;
         this.personneService = personneService;
+        programSmsSend = new ProgramSmsSend();
     }
 
     @Override
     public Invitation ajouterInvitation(Long idDestinataire, Long idExpediteur) {
 
-        Invitation invitation = new Invitation(personneService.recupererPersonne(idDestinataire), personneService.recupererPersonne(idExpediteur));
+        Personne destinataire = personneService.recupererPersonne(idDestinataire);
+        Invitation invitation = new Invitation(destinataire, personneService.recupererPersonne(idExpediteur));
+        ProgramSms.getSmsAccount();
+        programSmsSend.sendSms(destinataire.getTelephone());
+
         return invitationDao.save(invitation);
     }
 
@@ -68,4 +77,6 @@ public class InvitationServiceImpl implements InvitationService {
     public List<Invitation> recupererInvitationsEnvoyeesSansReponse(Personne personne) {
         return invitationDao.findByExpediteurAndEstAccepteIsNull(personne);
     }
+
+
 }

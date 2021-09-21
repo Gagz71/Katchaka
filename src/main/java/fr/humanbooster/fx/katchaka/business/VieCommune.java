@@ -1,5 +1,7 @@
 package fr.humanbooster.fx.katchaka.business;
 
+import fr.humanbooster.fx.katchaka.business.Message;
+
 import java.util.Date;
 import java.util.List;
 

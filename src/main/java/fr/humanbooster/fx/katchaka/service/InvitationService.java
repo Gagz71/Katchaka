@@ -22,4 +22,8 @@ public interface InvitationService {
 
     List<Invitation> recupererInvitationsEnvoyeesSansReponse(Personne personne);
 
+
+
+
+
 }

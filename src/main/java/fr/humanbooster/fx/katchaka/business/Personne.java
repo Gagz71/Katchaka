@@ -1,5 +1,6 @@
 package fr.humanbooster.fx.katchaka.business;
 
+import fr.humanbooster.fx.katchaka.business.Message;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -8,8 +9,6 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -40,6 +39,9 @@ public class Personne {
     private String bio;
     private int nbCredits;
     private boolean estFumeur;
+
+
+	private String telephone;
 
 
     @ManyToOne
@@ -211,6 +213,14 @@ public class Personne {
 
 	public void setInvitationsRecues(List<Invitation> invitationsRecues) {
 		this.invitationsRecues = invitationsRecues;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	@Override

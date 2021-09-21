@@ -37,8 +37,10 @@ public class InitController {
 
 
     // Cette méthode serva invoquée dès que Spring a injecté tous les objets
-    //@PostConstruct
+    @PostConstruct
     private void init() {
+
+        //getSmsAccount();
 
         if (villeService.recupererVilles().isEmpty()) {
             villeService.ajouterVille("Lyon");
@@ -247,5 +249,9 @@ public class InitController {
 
 
     }
+
+
+
+
 
 }
