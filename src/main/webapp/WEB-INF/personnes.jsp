@@ -82,19 +82,19 @@
                                                 </li>
                                           </c:if>
                                           <li class="page-item active">
-                                                <a class="page-link" href="#">${pageDePersonnes.number+1}</a>
+                                                <a class="page-link" href="?page=0&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">${pageDePersonnes.number+1}</a>
                                           </li>
                                           <li class="page-item">
-                                                <a class="page-link" href="#">${pageDePersonnes.number+2}</a>
+                                                <a class="page-link" href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">${pageDePersonnes.number+2}</a>
                                           </li>
                                           <li class="page-item">
-                                                <a class="page-link" href="#">${pageDePersonnes.number+3}</a>
+                                                <a class="page-link" href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">${pageDePersonnes.number+3}</a>
                                           </li>
                                           <li class="page-item">
-                                                <a class="page-link" href="#">${pageDePersonnes.number+4}</a>
+                                                <a class="page-link" href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">${pageDePersonnes.number+4}</a>
                                           </li>
                                           <li class="page-item">
-                                                <a class="page-link" href="#">${pageDePersonnes.number+5}</a>
+                                                <a class="page-link" href="?page=${pageDePersonnes.number+1}&sort=${pageDePersonnes.sort.iterator().next().property},${pageDePersonnes.sort.iterator().next().direction}&utilisateurs_page=${pageDUtilisateurs.number}&utilisateurs_sort=${pageDUtilisateurs.sort.iterator().next().property},${pageDUtilisateurs.sort.iterator().next().direction}">${pageDePersonnes.number+5}</a>
                                           </li>
 <%--                                          Si c'est la dernière page--%>
                                           <c:if test="${pageDePersonnes.last}">

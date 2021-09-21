@@ -20,6 +20,7 @@ public class StatutServiceImpl implements StatutService {
 
 	@Override
 	public Statut ajouterStatut(String nom) {
+
 		return statutDao.save(new Statut(nom));
 	}
 

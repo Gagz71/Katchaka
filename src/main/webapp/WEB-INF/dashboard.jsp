@@ -43,7 +43,7 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         
-        
+        <!--Section profile-->
         <div class="tab-pane fade active show" id="profile">
             <div class="card mb-3 col-6 m-auto mt-3">
                 <h3 class="card-header d-flex align-items-center justify-content-between ${sessionScope.personne.genre.nom == 'Femme' ?'border-primary ' : 'border-info'}">${sessionScope.personne.pseudo}
@@ -59,10 +59,10 @@
                     <h5 class="card-title"><span class="badge ${sessionScope.personne.genre.nom == 'Femme' ?'bg-primary ' : 'bg-info'} rounded-pill">${sessionScope.personne.nbCredits}</span></h5>
                 
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
+                <div class="card-img">
+                    <img src="" alt="">
+                    <a href="televersementImage">Uploader un fichier</a>
+                </div>
                 <div class="card-body">
                     <h6 class="card-subtitle  ${sessionScope.personne.genre.nom == 'Femme' ?'text-primary ' : 'text-info'}">Biographie</h6>
                     <p class="card-text ">${sessionScope.personne.bio}</p>
@@ -114,57 +114,87 @@
         
         
         </div>
-        
+    
+        <!--Section Invitations Envoyés-->
         <div class="tab-pane fade" id="invitationsEnvoyes">
-            
-            <c:forEach items="${invitationsEnvoyes}" var="invitationEnvoye">
-                
-                ${invitationEnvoye}
-                
-                <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Envoyé le <fmt:formatDate pattern="dd/MM/YYY " value="${invitationEnvoye.dateEnvoi}"/> </div>
-                    <h4 class="card-title">
-                        <a href="personneId?ID=${invitationEnvoye.expediteur.id}" class="nav-link">A ${invitationEnvoye.expediteur.pseudo}</a>
-                    </h4>
-                    <div class="card-body">
+            <div class="row row-cols-1 row-cols-md-3 justify-content-center">
+                <c:forEach items="${invitationsEnvoyes}" var="invitationEnvoye">
+                    
+                    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Envoyé le <fmt:formatDate pattern="dd/MM/YYY " value="${invitationEnvoye.dateEnvoi}"/> </div>
+                        <h4 class="card-title">
+                            <a href="personneId?ID=${invitationEnvoye.destinataire.id}" class="nav-link ${invitationEnvoye.destinataire.genre == 'Femme'? 'text-primary' : 'text-info'}">A ${invitationEnvoye.destinataire.pseudo}</a>
+                            <h6 class="text-muted">${invitationEnvoye.destinataire.ville.nom}</h6>
+                        </h4>
                         
-                        <p class="card-text">Statut de l'invitation :
-                            <c:if test="${invitationEnvoye.isEstAccepte() == true}">
-                                ✅ <br>Vous et ${invitationEnvoye.destinataire.pseudo} êtes désormais amis. <br>
-                                <a href="personneId?ID=${invitationEnvoye.destinataire.id}" class="nav-link">Jeter un coup d'oeil à son profil 👀</a>
-                            
-                            </c:if>
-                            
-                            <c:if test="${invitationEnvoye.isEstAccepte() == false}">
-                                Invitation pas encore accepté
-                            </c:if>
-                        </p>
+                        <div class="card-body">
+                            <p class="card-text">Statut de l'invitation :
+                                <c:if test="${invitationEnvoye.isEstAccepte()}">
+                                    ✅ <br>Vous et ${invitationEnvoye.destinataire.pseudo} êtes désormais amis. <br>
+                                    <a href="personneId?ID=${invitationEnvoye.destinataire.id}" class="nav-link">Jeter un coup d'oeil à son profil 👀</a>
+                                </c:if>
+                                <c:if test="${invitationEnvoye.isEstAccepte() == null}">
+                                    Pas encore accepté
+                                </c:if>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                
-                <a href="invitation?ID=${invitationEnvoye.id}">
-                        ${invitationEnvoye}
-                </a>
-            
-            
-            </c:forEach>
-        </div>
         
-        <div class="tab-pane fade" id="invitationsRecues">
-            ${invitationsRecues}</>
-            
+                    <a href="invitation?ID=${invitationEnvoye.id}">
+                            ${invitationEnvoye}
+                    </a>
     
     
-            <div class="accepter">
-                <a href="responseInvitation?ID=${invitation.id}&EST_ACCEPTE=true">Accepter</a>
-                <a href="responseInvitation?ID=${invitation.id}&EST_ACCEPTE=false">Décliner</a>
+                </c:forEach>
             </div>
+            
+            
+        </div>
     
+        <!--Section Invitation Reçue-->
+        <div class="tab-pane fade" id="invitationsRecues">
+            <div class="row row-cols-1 row-cols-md-3 justify-content-center">
+                <c:forEach items="${invitationsRecues}" var="invitationRecue">
+                    ${invitationRecue}
+                    ${invitationRecue.id}
     
+                    <div class="card border-secondary mb-3 ${invitationRecue.expediteur.genre == 'Femme'? 'bg-primary' : 'bg-info'}" style="max-width: 20rem;padding: 0;">
+                        <div class="card-header">Envoyé le <fmt:formatDate pattern="dd/MM/YYY " value="${invitationRecue.dateEnvoi}"/> </div>
+                        <h4 class="card-title mt-2">
+                            <a href="personneId?ID=${invitationRecue.expediteur.id}" class="nav-link">Par ${invitationRecue.expediteur.pseudo} 👀</a>
+                            <h6 class="text-muted" style="padding: .5rem 1rem;">${invitationRecue.expediteur.ville.nom}</h6>
+                        </h4>
+        
+                        <div class="card-body">
+                            <p class="card-text">Statut de l'invitation :
+                                <c:if test="${invitationRecue.isEstAccepte()}">
+                                    ✅ <br>Vous et ${invitationRecue.expediteur.pseudo} êtes désormais amis.
+                                </c:if>
+                                <c:if test="${invitationRecue.isEstAccepte() == null}">
+                                    Pas encore accepté
+    
+                            <div class="accepter">
+                                <a href="responseInvitation?ID=${invitationRecue.id}&EST_ACCEPTE=true">Accepter</a>
+                                <a href="responseInvitation?ID=${invitationRecue.id}&EST_ACCEPTE=false">Décliner</a>
+                            </div>
+                                </c:if>
+                            </p>
+                        </div>
+                    </div>
+        
+                    <%--Pourquoi ça se supprime ??
+        --%>
+                
+    
+                </c:forEach>
+            </div>
+            
+            
+        </div>
     
     </div>
-
-
+    
+    
 
 
 

@@ -1,5 +1,11 @@
 package fr.humanbooster.fx.katchaka.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,10 +24,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 // On indique à Spring que cette classe fait partie de la couche contrôleur
@@ -40,6 +44,8 @@ public class KatchakaController {
     private InvitationService invitationService;
 
     private final HttpSession httpSession;
+
+    private static final String DOSSIER_IMAGES = "src/main/webapp/img/";
 
     // Ce constructeur va provoquer l'injection de dépendances
     public KatchakaController(VilleService villeService, StatutService statutService, InteretService interetService,
@@ -60,7 +66,11 @@ public class KatchakaController {
     // l'URL /
     @GetMapping({"/", "index", "login"})
     public ModelAndView home(){
-        return new ModelAndView("login");
+        Personne personne = (Personne) httpSession.getAttribute("personne");
+        if(personne == null){
+            return new ModelAndView("login");
+        }
+        return new ModelAndView("index");
     }
 
     @GetMapping({ "villes"})
@@ -254,7 +264,7 @@ public class KatchakaController {
     }
 
     @GetMapping({"responseInvitation"})
-    public ModelAndView responseInvitation(@RequestParam("ID") Long idInvitation, @RequestParam("EST_ACCEPTE") boolean estAccepte){
+    public ModelAndView responseInvitation(@RequestParam("ID") Long idInvitation, @RequestParam("EST_ACCEPTE") Boolean estAccepte){
         //Le @RequestParam => dans les liens accepter/décliner on a demander l'ID et el CHOIX
 
         //On récupère l'invitation dont l'id est donné en param
@@ -262,6 +272,8 @@ public class KatchakaController {
 
         //Mise à jour du bool est accepté si l'invité à cliquer sur le lien accepter
         invitationService.updateInvitation(invitation, estAccepte);
+
+        System.out.println("statut de l'invitation: "+invitation.isEstAccepte());
 
         return new ModelAndView("redirect:dashboard");
     }
@@ -273,6 +285,56 @@ public class KatchakaController {
 
     }
 
+
+    @GetMapping("/televersementImage")
+    public ModelAndView televersementImageGet(@RequestParam("ID") Long id) {
+
+        Personne personne = (Personne) httpSession.getAttribute("personne");
+        if (personne == null) {
+            System.out.println(new Date() + " : Il n'y a pas de client en session");
+            return home();
+        }
+
+        ModelAndView mav = new ModelAndView("televersement");
+        return mav;
+    }
+
+    /**
+     *
+     * @param id de la Personne concernée
+     * @param multipartFile flux binaire isolé par Spring
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("televersementImage")
+    public ModelAndView televersementImagePost(@RequestParam("ID") Long id, @RequestParam("FICHIER") MultipartFile multipartFile) throws IOException {
+
+        Personne personne = (Personne) httpSession.getAttribute("personne");
+        if (personne == null) {
+            System.out.println(new Date() + " : Il n'y a pas de client en session");
+            return home();
+        }
+
+        System.out.println(new Date() + " : téléversement de l'image pour l'utilisateur " + id);
+        enregisterFichier(String.valueOf(id), multipartFile);
+        return new ModelAndView("redirect:tableauDeBord");
+    }
+
+
+    private static void enregisterFichier(String nom, MultipartFile multipartFile) throws IOException {
+        Path chemin = (Path) Paths.get(DOSSIER_IMAGES);
+
+        if (!Files.exists(chemin)) {
+            Files.createDirectories(chemin);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path cheminFichier = chemin.resolve(nom);
+            Files.copy(inputStream, cheminFichier, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ioe) {
+            throw new IOException("Erreur d'écriture : " + nom, ioe);
+        }
+    }
 
 
 }
