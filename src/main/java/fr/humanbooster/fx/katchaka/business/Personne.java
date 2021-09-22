@@ -60,19 +60,19 @@ public class Personne {
     private Statut statut;
 
     @NotEmpty(message = "Merci de choisir au moins un interet")
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)   //Persist car on veut garder les intérêts même si les personnes sont supprimés
     private List<Interet> interets;
 
-    @OneToMany(mappedBy = "expediteur")
+    @OneToMany(mappedBy = "expediteur", cascade=CascadeType.REMOVE)
     private List<Message> messagesEnvoyes;
 
-    @OneToMany(mappedBy = "destinataire")
+    @OneToMany(mappedBy = "destinataire", cascade=CascadeType.REMOVE)
     private List<Message> messagesRecus;
     
-    @OneToMany(mappedBy= "expediteur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy= "expediteur", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     private List<Invitation> invitationsEnvoyees;
 
-    @OneToMany(mappedBy= "destinataire")
+    @OneToMany(mappedBy= "destinataire", cascade=CascadeType.REMOVE)
     private List<Invitation> invitationsRecues;
 
     public Personne() {

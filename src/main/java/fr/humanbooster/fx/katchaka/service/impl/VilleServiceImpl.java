@@ -44,7 +44,32 @@ public class VilleServiceImpl implements VilleService {
 	}
 
 	@Override
+	public Ville recupererVille(Long id) {
+
+		//Ne pas oublier .orElse pour éviter erreur d'incompatibilité Optionnal jsais pas quoi
+		return villeDao.findById(id).orElse(null);
+	}
+
+	@Override
 	public List<Ville> recupererVilles(String nom) {
 		return villeDao.findByNomContaining(nom);
+	}
+
+	@Override
+	public boolean supprimerVille(Long id) {
+
+		Ville ville = villeDao.findById(id).orElse(null);
+
+		if(ville == null){
+			return false;
+		}
+		villeDao.delete(ville);
+		return true;
+
+	}
+
+	@Override
+	public Ville enregistrerVille(Ville ville) {
+		return villeDao.save(ville);
 	}
 }

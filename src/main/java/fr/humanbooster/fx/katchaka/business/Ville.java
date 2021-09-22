@@ -1,12 +1,10 @@
 package fr.humanbooster.fx.katchaka.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
 @Entity
@@ -17,7 +15,8 @@ public class Ville {
 
 	private String nom;
 
-	@OneToMany(mappedBy = "ville")
+	@JsonIgnore
+	@OneToMany(mappedBy = "ville", cascade= CascadeType.REMOVE)
 	private List<Personne> personnes;
 
 	public Ville() {

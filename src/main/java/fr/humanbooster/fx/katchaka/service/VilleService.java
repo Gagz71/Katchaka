@@ -13,4 +13,12 @@ public interface VilleService {
 	List<Ville> recupererVilles(String nom);
 
 	Ville recupererVille(String nom);
+
+	Ville recupererVille(Long id);
+
+	boolean supprimerVille(Long id);
+
+	Ville enregistrerVille(Ville ville);
+
+
 }
